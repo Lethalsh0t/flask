@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY requirements requirements
 RUN pip3 install -r requirements
-RUN apt-get update && apt-get install -y unixodbc-dev unixodbc sqlite3 libsqlite3-dev sqliteodbc
+RUN apt-get update && apt-get install -y unixodbc-dev unixodbc sqlite3 libsqlite3-dev
 
 COPY . .
 
