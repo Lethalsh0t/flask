@@ -1,12 +1,15 @@
 FROM python:3.11-slim-buster
 
+ENV LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/odbc/:$LD_LIBRARY_PATH
+
 WORKDIR /app
 
 COPY requirements requirements
 
-RUN pip install -r requirements
-RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev unixodbc unixodbc-dev unixodbc-bin
-RUN apt-get install -y libsqliteodbc
+RUN apt-get update \
+    && apt-get -y install unixodbc-dev \
+    && pip install --no-cache-dir -r requirements
+
 COPY . .
 
 CMD ["python", "app.py"]
