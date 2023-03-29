@@ -13,7 +13,7 @@ COPY . .
 RUN python setup.py build
 
 # final stage
-FROM mcr.microsoft.com/windows/nanoserver:1809
+FROM python:3.11-alpine
 
 WORKDIR /app
 
