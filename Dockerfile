@@ -5,10 +5,7 @@ WORKDIR /app
 
 COPY requirements requirements
 RUN pip3 install -r requirements
-RUN apt-get update && apt-get install -y unixodbc-dev unixodbc sqlite3 libsqliteodbc
-
-# copy SQLite3 ODBC driver shared library file to /usr/lib/x86_64-linux-gnu
-COPY sqlite3odbc/libsqlite3odbc.so /usr/lib/x86_64-linux-gnu/
+RUN apt-get update && apt-get install -y sqliteodbc
 
 COPY . .
 
