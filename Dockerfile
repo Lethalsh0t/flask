@@ -20,4 +20,4 @@ WORKDIR /app
 # copy your application from the build container
 COPY --from=builder /app /app
 
-CMD [ "python.exe", "-m", "flask", "run", "--host=0.0.0.0"]
+CMD [ "python3", "-m", "flask", "run", "--host=0.0.0.0"]
