@@ -1,9 +1,9 @@
 FROM python:3.11
 
-WORKDIR C:/Users/opet2/testflaskapp
+WORKDIR /app
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+COPY requirements requirements
+RUN pip3 install -r requirements
 
 COPY . .
 
