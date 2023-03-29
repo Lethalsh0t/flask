@@ -1,23 +1,23 @@
-# build stage
-FROM python:3.11 as builder
+# base image
+FROM python:3.11
 
+# set working directory
 WORKDIR /app
 
-COPY requirements requirements
-RUN pip3 install -r requirements
-RUN apt-get update && apt-get install -y sqliteodbc
+# install dependencies
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
 
+# install ODBC driver and SQLite3
+RUN apt-get update && apt-get install -y unixodbc-dev unixodbc sqlite3 libsqlite3-dev
+
+# copy app files
 COPY . .
 
-# replace with the command to build your application
-RUN python app.py build
+# set environment variables
+ENV FLASK_APP=app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_RUN_PORT=5000
 
-# final stage
-FROM python:3.11-alpine
-
-WORKDIR /app
-
-# copy your application from the build container
-COPY --from=builder /app /app
-
-CMD [ "python", "-m", "flask", "run", "--host=0.0.0.0"]
+# start app
+CMD ["flask", "run"]
