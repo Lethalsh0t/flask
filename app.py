@@ -4,7 +4,7 @@ import pyodbc
 app = Flask(__name__)
 
 # Set up database connection
-cnxn = pyodbc.connect('Driver={SQLite};Database=C:/Users/opet2/testflaskapp/chinook.db')
+cnxn = pyodbc.connect('Driver={SQLite3};Database=C:/Users/opet2/testflaskapp/chinook.db')
 cursor = cnxn.cursor()
 
 @app.route('/', methods=['GET', 'POST'])
