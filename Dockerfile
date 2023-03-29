@@ -5,8 +5,8 @@ FROM python:3.11
 WORKDIR /app
 
 # install dependencies
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+COPY requirements requirements
+RUN pip3 install -r requirements
 
 # install ODBC driver and SQLite3
 RUN apt-get update && apt-get install -y unixodbc-dev unixodbc sqlite3 libsqlite3-dev
