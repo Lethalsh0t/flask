@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y unixodbc-dev unixodbc sqlite3 libsqlite
 COPY . .
 
 # replace with the command to build your application
-RUN python setup.py build
+RUN python app.py build
 
 # final stage
 FROM python:3.11-alpine
